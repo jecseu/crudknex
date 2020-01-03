@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+<body>
+<h1>Clients</h1>
+<p><a href="clients/create">Nova Pessoa</a></p>
+<table class="table table-striped table-hover table-bordered">
+    <tr>
+        <th>Nome</th>
+        <th>E-mail</th> 
+        <th>Ações</th>   
+    </tr>
+
+    <% clients.map( (pessoa) => { %>
+    <tr>
+        <td><%= pessoa.name %></td>
+        <td><%= pessoa.email %></td>
+        <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a type="button" class="btn btn-default" href="clients/update/<%= pessoa.id %>">Editar</a>
+                <a type="button" class="btn btn-default" href="clients/delete/<%= pessoa.id %>" onclick="return confirm('Deseja realmente excluir?')">Excluir</a>
+            </div>
+        </td>
+    </tr> 
+    <% }) %>
+<%- include('../partials/footer.ejs') %>
